@@ -1,0 +1,14 @@
+body {
+	font-family: sans-serif;
+}
+
+.topbar {
+	position: fixed;
+	top: 0px;
+	width: 100%;
+	left: 0px;
+	background-color: #ed7d31;
+	height: 2em;
+	text-align: center;
+	font-weight: bold;
+}
