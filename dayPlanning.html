@@ -1,15 +1,19 @@
 <html>
 <head>
-<script src="js-cookie.js"></script>
-<script src="script.js"></script>
-<link rel="stylesheet" href="style.css">
+	<meta charset="utf-8">
+	<script src="js-cookie.js"></script>
+	<script src="script.js"></script>
+	<script src="dayPlanning.js"></script>
+	<link rel="stylesheet" href="style.css">
 </head>
-<body>
+<body onload="buildCurrentSwitches();">
 <div class="topbar">Thermostat+</div>
 
 <div id="content">
 	<p class="title">Current switches</p>
-	<div class="switches"></div>
+	<div id="switches">
+		loading switches...
+	</div>
 	
 	<p class="title">Add switch</p>
 	<div class="hflex">
