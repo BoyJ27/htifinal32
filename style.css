@@ -1,5 +1,7 @@
 body {
 	font-family: sans-serif;
+	font-weight: bold;
+	background-color: #cccccc;
 }
 
 .topbar {
@@ -11,4 +13,46 @@ body {
 	height: 2em;
 	text-align: center;
 	font-weight: bold;
+}
+
+#content, .content {
+	margin-top: 2em;
+}
+
+.title {
+	
+}
+
+.small {
+	
+}
+
+.label {
+	font-style: italic;
+}
+
+.hflex {
+	display: flex;
+	flex-direction: row;
+	margin-left: 20%;
+	width: 80%;
+}
+
+.hflex div {
+	flex-grow: 1;
+}
+
+.hflex div input {
+	width: 70%;
+	margin: 5%;
+}
+
+.hflex div img {
+	position: relative;
+	bottom: -5px;
+}
+
+input {
+	border-radius: 5px;
+	min-width: 0px;
 }
