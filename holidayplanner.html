@@ -1,0 +1,77 @@
+	<html>
+	<head>
+	<script src="js-cookie.js"></script>
+	<script src="script.js"></script>
+	<link rel="stylesheet" href="style.css">
+	</head>
+	<body>
+	<div class="topbar">Thermostat+</div>
+
+	<div id="content">
+	<!--set temp to div*/-->
+		<div>
+				<span class="title">Set Temp. To:</span>
+				<input id="settemp"></input>
+		</div>
+	<!--set start date div*/-->
+		<div>
+				<span class="title">Start Date:</span>
+				<input id="startdate" type="date" placeholder="dd/mm/yyyy"></input>
+				<input type="image" id="myimage" src="calender.png" width="25px" />
+		</div>
+	<!--set end date div*/-->
+	  <div>
+				<span class="title">End Date:</span>
+				<input id="enddate" type="date" placeholder="dd/mm/yyyy"></input>
+				<input type="image" id="myimage" src="calender.png" width="25px" />
+	  </div>
+	<!--confirm button div*/-->
+		<div>
+				<span class="title"><button id="planHoliday" class="confirm">Plan Holiday</button></span>
+		</div>
+	<!--table of planned holidays div*/-->
+		<div>
+				<span class="title">Planned Holidays:</span><br>
+				<table id="holidaytable"><td class="label">From:</td><td class="label">Till:</td><td class="label">Temp:</td><td></td></table>
+
+		</div>
+
+	</div>
+
+	<script>
+	document.getElementById("planHoliday").onclick = function() {
+ 		var table = document.getElementById("holidaytable");
+		var settemp = document.getElementById("settemp").value;
+    var start = document.getElementById("startdate").value;
+		var stop = document.getElementById("enddate").value;
+
+
+		if (settemp == ""|| start == "" || stop == ""){
+			alert("You've probable left one of the fields empty. Please specify a preferred temperature, a start date and an end date.");
+	}
+		else if ((settemp < 5 || settemp > 30) ) {
+			alert("Please check if the desired temperature is between 5 and 30 degrees C and the dates follow the format dd/mm/yyyy.");
+	} else{
+
+		var checkbox = document.createElement('input');
+		checkbox.type = "checkbox";
+
+				var table = document.getElementById("holidaytable");
+				var row = table.insertRow(-1);
+
+				var cell2 = row.insertCell(0);
+				var cell3 = row.insertCell(1);
+				var cell1 = row.insertCell(2);
+				var cell4 = row.insertCell(3);
+				cell1.innerHTML = settemp + String.fromCharCode(176)+"C";
+				cell2.innerHTML = start;
+				cell3.innerHTML = stop;
+				cell4.append(checkbox);
+
+    settemp.clear();
+		start.clear();
+		stop.clear();
+	}
+}
+	</script>
+	</body>
