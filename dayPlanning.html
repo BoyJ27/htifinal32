@@ -19,11 +19,11 @@
 	<div class="hflex">
 		<div>
 			<span class="label">Add day</span><br>
-			<input></input><img src="add.png" width="20%">
+			<input id="dayinput" type="time"></input><img src="add.png" onclick="addSwitch('day', 'dayinput');buildCurrentSwitches();">
 		</div>
 		<div>
 			<span class="label">Add night</span><br>
-			<input></input><img src="add.png" width="20%">
+			<input id="nightinput" type="time"></input><img onclick="addSwitch('night', 'nightinput');buildCurrentSwitches();" src="add.png">
 		<div>
 	</div>
 		
