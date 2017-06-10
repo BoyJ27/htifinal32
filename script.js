@@ -9,6 +9,7 @@ function setCookieDefaults () {
 }
 
 function buildDayTables() {
+	var size = 16 * 1000 / window.innerWidth;
 	var images=document.getElementsByClassName("dayTable");
 	for (var i=0; i<images.length; i++){
 		if (images[i].tagName==="IMG"){
@@ -40,7 +41,7 @@ function buildDayTables() {
 			daytimes.push(24*60);
 			nighttimes=nighttimes.sort(function(x,y) {return x-y});
 			
-			var data="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1000\" height=\"100\" id=\"svg999\" version=\"1.1\">";
+			var data="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1000\" height=\""+(size*3)+"\" id=\"svg999\" version=\"1.1\">";
 			var lasttime=0;
 			var lastcolor="blue";
 			while (daytimes.length > 0 || nighttimes.length > 0){
@@ -58,14 +59,24 @@ function buildDayTables() {
 				}
 				if (time > lasttime){
 					data+="<rect fill=\""+lastcolor+"\" x=\""+lasttime * 1000 / (24 * 60)
-					+"\" y=\"0\" width=\""+((time - lasttime) * 1000 / (24 * 60))+"\" height=\"100\"/>\n";
+					+"\" y=\""+size/2+"\" width=\""+((time - lasttime) * 1000 / (24 * 60))+"\" height=\""+size+"\"/>\n";
 				}
 				lasttime=time;
 				lastcolor=color;
 			}
+			data+="<rect fill=\"#ccc\" x=\"0\" y=\"0\" width=\"1000\" height=\""+size/2+"\"/>"
+			data+="<rect fill=\"#ccc\" x=\"0\" y=\""+(size*1.5)+"\" width=\"1000\" height=\""+size/2+"\"/>\n"
+			data+="<rect fill=\"transparent\" x=\""+size/16+"\" y=\""+size/2+"\" width=\""+(1000-size/8)+"\" height=\""+size
+					+"\" stroke=\"black\" stroke-width=\""+size/8+"\"/>\n"
+			var step;
+			step=Math.floor(size * 5 * 0.9 * 24 /1000);
+			for (var j=step; j<24; j+= step){
+				data+="<text fill=\"000\" x=\""+j*1000/24+"\" y=\""+(size*3-5)+"\" font-size=\""+size+"\"  text-anchor=\"middle\">"+j+":00</text>"
+			}
 			data+="</svg>";
+			console.log(data);
 			
-			images[i].setAttribute("src","data:image/svg+xml;utf8,"+data);
+			images[i].setAttribute("src","data:image/svg+xml;utf8,"+data.split("#").join("%23"));
 		}
 	}
 }
