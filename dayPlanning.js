@@ -51,14 +51,18 @@ function buildCurrentSwitches() {
 		}
 	}
 	disableStuff();
+	buildDayTables();
 }
 
 function addSwitch(type, elem) {
 	var el = document.getElementById(elem);
-	values=JSON.parse(Cookies.get(Cookies.get("day")+"switch"));
-	values.push({time: el.value, type: type});
-	el.value="";
-	Cookies.set(Cookies.get("day")+"switch", values.sort());
+	if (!el.disabled) {
+		values=JSON.parse(Cookies.get(Cookies.get("day")+"switch"));
+		values.push({time: el.value, type: type});
+		el.value="";
+		Cookies.set(Cookies.get("day")+"switch", values.sort());
+		buildDayTables();
+	}
 }
 
 function createRemoveSwitch(id){
@@ -72,6 +76,7 @@ function removeSwitch(id) {
 	el.parentNode.removeChild(el);
 	readCurrentSwitches();
 	disableStuff();
+	buildDayTables();
 }
 
 function readCurrentSwitches() {
@@ -91,9 +96,11 @@ function readCurrentSwitches() {
 		}
 	}
 	Cookies.set(Cookies.get("day")+"switch", structure);
+	buildDayTables();
 }
 
 function disableStuff() {
 	document.getElementById("dayinput").disabled = document.getElementById("leftbar").childNodes.length >= 6;
 	document.getElementById("nightinput").disabled=document.getElementById("rightbar").childNodes.length >= 6;
 }
+

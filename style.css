@@ -48,7 +48,8 @@ body {
 
 .hflex div input {
 	width: 70%;
-	margin: 5%;
+	margin-left: 5%;
+	margin-right: 5%;
 }
 
 .hflex div img {
@@ -60,4 +61,7 @@ body {
 input {
 	border-radius: 5px;
 	min-width: 0px;
+}
+input:disabled {
+	background-color: #cccccc;
 }
