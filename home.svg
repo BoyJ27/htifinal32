@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+	width="16" height="16"
+  >
+  <polygon
+      points="8 2, 16 8, 13 8, 13 14, 9 14, 9 11, 7 11, 7 14, 3 14, 3 8, 0 8"
+      fill="#000000"
+  />
+</svg>

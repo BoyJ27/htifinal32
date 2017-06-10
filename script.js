@@ -3,8 +3,11 @@
 
 
 function setCookieDefaults () {
-	if (Cookies.get("mondayswitch")===undefined){
-		Cookies.set("mondayswitch", [{type: "day", time: "12:45"}, {type: "night", time: "1:13"}]);
+	days=["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+	for (var i=0; i<days.length; i++){
+		if (Cookies.get(days[i]+"switch")===undefined){
+			Cookies.set(days[i]+"switch", [{type: "day", time: "7:30"}, {type: "night", time: "23:00"}]);
+		}
 	}
 }
 
@@ -16,12 +19,15 @@ function buildDayTables() {
 			var day;
 			if (images[i].getAttribute("day")){
 				day=images[i].getAttribute("day");
+				images[i].onclick=createGoToPage(day);
 			}
 			else {
 				day=Cookies.get("day");
 			}
-			
-			data=JSON.parse(Cookies.get(day+"switch"));
+			var value=Cookies.get(day+"switch");
+			console.log(value);
+			console.log(day+"switch");
+			data=JSON.parse(value);
 			var daytimes=[];
 			var nighttimes=[];
 			for (var j=0; j<data.length; j++){
@@ -74,11 +80,20 @@ function buildDayTables() {
 				data+="<text fill=\"000\" x=\""+j*1000/24+"\" y=\""+(size*3-5)+"\" font-size=\""+size+"\"  text-anchor=\"middle\">"+j+":00</text>"
 			}
 			data+="</svg>";
-			console.log(data);
+			//console.log(data);
 			
 			images[i].setAttribute("src","data:image/svg+xml;utf8,"+data.split("#").join("%23"));
 		}
 	}
+}
+
+function goToDayPage(day) {
+	Cookies.set("day",day);
+	window.location.href="dayPlanning.html";
+}
+
+function createGoToPage(day){
+	return function() {goToDayPage(day);};
 }
 
 

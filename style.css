@@ -65,3 +65,25 @@ input {
 input:disabled {
 	background-color: #cccccc;
 }
+
+.dayTable {
+	width: 100%;
+}
+
+.homeimg, .backimg {
+	position: absolute;
+	width: 2em;
+	/*background-color: fuchsia;*/
+}
+
+.homeimg {
+	left: 0px;
+}
+
+.backimg {
+	right: 0px;
+}
+
+.homeimg img, .backimg img {
+	width: 100%;
+}

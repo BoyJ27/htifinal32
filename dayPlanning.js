@@ -104,3 +104,5 @@ function disableStuff() {
 	document.getElementById("nightinput").disabled=document.getElementById("rightbar").childNodes.length >= 6;
 }
 
+
+
