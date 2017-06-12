@@ -1,23 +1,29 @@
 <html>
 <head>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="mainscreen.js"></script>
 <script src="js-cookie.js"></script>
 <script src="script.js"></script>
 <script src="api.js"></script>
-<script src="jquery-2.1.0.min.js"></script>
+<script src="holidayplanner.js"></script>
+
 <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div class="topbar">Thermostat+</div>
+  <div class="topbar">
+</div>
+
 <div id="content">
-<div id="currentday"></div>
-<div id="currenttime"></div>
-<p class="title">Current temperature:</p>
-<p class="title">Set temperature:</p>
-<span class="title"><div id="nextswitch"></div></span>
+<p id="currentday"></p>
+<p id="currenttime"></p>
+<p class="title">Current temperature: <span id="currentTemp"></span></p>
+<p class="title">Set temperature: <span id="targetTemp"></span></p>
+<span class="title">Until <div id="nextswitch"></div></span>
 <div>
-  <div><a><img source="daynight.png" class="imgbuttons"/></a></div>
-  <div><a><img source="weekplan.png" class="imgbuttons"/></a></div>
-  <div><a><img source="holiday.png" class="imgbuttons"/></a></div>
+  <div><a href="daynight.html"><img src="daynight.png" class="imgbuttons"/></a></div>
+  <div><a href="weekPlanning.html"><img src="weekplan.png" class="imgbuttons"/></a></div>
+  <div><a href="holidayplanner.html"><span id="dynamicimage"><img src="holidaygrey.png" class="imgbuttons"/></span></a></div>
 </div>
 </div>
 </body>
