@@ -3,7 +3,7 @@
  *
  */
 //Change 100 to your group number
-var ServerUrl = 'https://wwwis.win.tue.nl/2id40-ws/32';
+var ServerUrl = 'http://wwwis.win.tue.nl/2id40-ws/32';
 //Backup server
 //var ServerUrl = 'http://pcwin889.win.tue.nl/2id40-ws/32';
 
@@ -93,7 +93,7 @@ function getWeekProgram() {
                     if ($(this).attr('state') == 'on') {
                         if ($(this).attr('type') == Type.Day) {
                             getProgram(day).push([$(this).text(), '00:00']);
-                        } else {
+                        } else if (getProgram(day).length > 0) {
                             getProgram(day)[getProgram(day).length - 1][1] = $(this).text();
                         }
                     }
@@ -163,9 +163,9 @@ function setWeekProgram() {
             sw = doc.createElement('switch');
             sw.setAttribute('type', Type.Night);
 
-            if (i < nightSwitches.length) {
-                sw.setAttribute('state', 'on');
-                text = doc.createTextNode(nightSwitches[i]);
+            if (i < nightSwitches.length && nightSwitches[i].substr(0,2)!=="24") {
+				sw.setAttribute('state', 'on');
+				text = doc.createTextNode(nightSwitches[i]);
             } else {
                 sw.setAttribute('state', 'off');
                 text = doc.createTextNode('00:00');
