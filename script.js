@@ -3,7 +3,7 @@
 
 
 function setCookieDefaults () {
-	days=["monday", "tuesday", "wednesday", "thursday", "friday", "saturday", "sunday"];
+	days=["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 	for (var i=0; i<days.length; i++){
 		if (Cookies.get(days[i]+"switch")===undefined){
 			Cookies.set(days[i]+"switch", [{type: "day", time: "7:30"}, {type: "night", time: "23:00"}]);
@@ -24,28 +24,9 @@ function buildDayTables() {
 			else {
 				day=Cookies.get("day");
 			}
-			var value=Cookies.get(day+"switch");
-			console.log(value);
-			console.log(day+"switch");
-			data=JSON.parse(value);
-			var daytimes=[];
-			var nighttimes=[];
-			for (var j=0; j<data.length; j++){
-				var time=data[j].time.split(":");
-				time=Number(time[0])*60+Number(time[1]);
-				if (data[j].type==="day"){
-					daytimes.push(time);
-				}
-				else if (data[j].type=="night") {
-					nighttimes.push(time);
-				}
-				else {
-					console.error("invalid value for time.type");
-				}
-			}
-			daytimes=daytimes.sort(function(x,y) {return x-y});
-			daytimes.push(24*60);
-			nighttimes=nighttimes.sort(function(x,y) {return x-y});
+			var daynighttime=getDayNightTimes(day);
+			var daytimes=daynighttime[0];
+			var nighttimes=daynighttime[1];
 			
 			var data="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"1000\" height=\""+(size*3)+"\" id=\"svg999\" version=\"1.1\">";
 			var lasttime=0;
@@ -90,6 +71,38 @@ function buildDayTables() {
 			images[i].setAttribute("src","data:image/svg+xml;utf8,"+data.split("#").join("%23"));
 		}
 	}
+}
+
+function getDayNightTimes(day) {
+	if (day === undefined) {
+		console.error("invalid day: undefined");
+	}
+	var value=Cookies.get(day+"switch");
+	if (value === undefined) {
+		console.error("invalid cookie value: "+day+"switch");
+		return;
+	}
+	data=JSON.parse(value);
+	var daytimes=[];
+	var nighttimes=[];
+	for (var j=0; j<data.length; j++){
+		var time=data[j].time.split(":");
+		time=Number(time[0])*60+Number(time[1]);
+		if (data[j].type==="day"){
+			daytimes.push(time);
+			}
+		else if (data[j].type=="night") {
+			nighttimes.push(time);
+		}
+		else {
+			console.error("invalid value for time.type");
+		}
+	}
+	daytimes.push(24*60);
+	daytimes=daytimes.sort(function(x,y) {return x-y});
+	nighttimes=nighttimes.sort(function(x,y) {return x-y});
+
+	return [daytimes, nighttimes];
 }
 
 function goToDayPage(day) {

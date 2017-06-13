@@ -1,14 +1,12 @@
 function buildCurrentSwitches() {
-	
-	
 	var day=Cookies.get("day");
 	if (day===undefined){
-		day="monday";
+		day="Monday";
 		Cookies.set("day", day);
 	}
 	
 	if (Cookies.get(day+"switch")===undefined){
-		document.getElementById("content").innerHTML="error loading previous saved switches";
+		document.getElementById("content").innerHTML="error loading previous saved switches (Cookie not found)";
 		return
 	}
 	var switches=JSON.parse(Cookies.get(day+"switch"));
@@ -62,6 +60,7 @@ function addSwitch(type, elem) {
 		el.value="";
 		Cookies.set(Cookies.get("day")+"switch", values.sort());
 		buildDayTables();
+		cookiesToApi();
 	}
 }
 
@@ -77,6 +76,7 @@ function removeSwitch(id) {
 	readCurrentSwitches();
 	disableStuff();
 	buildDayTables();
+	cookiesToApi();
 }
 
 function readCurrentSwitches() {
@@ -97,6 +97,7 @@ function readCurrentSwitches() {
 	}
 	Cookies.set(Cookies.get("day")+"switch", structure);
 	buildDayTables();
+	cookiesToApi();
 }
 
 function disableStuff() {
@@ -104,5 +105,54 @@ function disableStuff() {
 	document.getElementById("nightinput").disabled=document.getElementById("rightbar").childNodes.length >= 6;
 }
 
+function cookiesToApi() {
+	for (i=0; i<DaysList.length; i++){
+		var dayNightTimes=getDayNightTimes(DaysList[i]);
+		var daytimes=dayNightTimes[0];
+		var nighttimes=dayNightTimes[1];
+		
+		Program[DaysList[i]]=[];
+		oldtype="night";
+		start=0;
+		var end;
+		while (daytimes.length > 0 || nighttimes.length > 0){
+			if (nighttimes.length ==0 || (daytimes.length != 0 && daytimes[0] < nighttimes[0])) {
+					type="day";
+					end=daytimes[0];
+					daytimes.shift();
+			}
+			else {
+				type="night";
+				end=nighttimes[0];
+				nighttimes.shift();
+			}
+			
+			if (oldtype == "day") {
+				Program[DaysList[i]].push([unparseTime(start/60.0), unparseTime(end/60.0)]);
+			}
+			
+			if (type != oldtype) {
+				oldtype=type;
+				start=end;
+			}
+		}
+		console.log(JSON.stringify(Program[DaysList[i]]));
+		sortMergeProgram(DaysList[i]);
+	}
+	setWeekProgram();
+}
 
+function apiToCookies() {
+	getWeekProgram();
+	for (i=0; i<DaysList.length; i++){
+		var program=[];
+		for (var j=0; j<Program[DaysList[i]].length; j++){
+			program.push({type: "day", time: Program[DaysList[i]][j][0]});
+			if (parseTime(Program[DaysList[i]][j][1])>0.05) {
+				program.push({type: "night", time: Program[DaysList[i]][j][1]});
+			}
+		}
+		Cookies.set(DaysList[i]+"switch", program);
+	}
+}
 

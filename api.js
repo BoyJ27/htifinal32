@@ -5,7 +5,7 @@
 //Change 100 to your group number
 var ServerUrl = 'http://wwwis.win.tue.nl/2id40-ws/32';
 //Backup server
-//var ServerUrl = 'http://pcwin889.win.tue.nl/2id40-ws/100';
+//var ServerUrl = 'http://pcwin889.win.tue.nl/2id40-ws/32';
 
 Type = {
     Day : 'day',
@@ -21,6 +21,9 @@ Days = {
     Saturday : 'Saturday',
     Sunday : 'Sunday'
 };
+
+DaysList = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday",
+			"Saturday", "Sunday"]
 
 var MinTemperature = parseFloat(5.0);
 var MaxTemperature = parseFloat(30.0);
@@ -226,7 +229,13 @@ function uploadData(address, xml) {
 }
 
 function parseTime(t) {
-    return parseFloat(t.substr(0,2)) + parseFloat(t.substr(3,2))/60;
+	var split=t.split(":");
+    return parseFloat(split[0]) + parseFloat(split[1]); //this is a stupid function. Why risk using a float here when a int
+	//is way more accurate. Also this assumes numbers below 12 are zero padded, which may not actually be true.
+}
+
+function unparseTime(t) {
+	return Math.floor(t)+":"+Math.floor((t*60.0) % 60)
 }
 
 /* Adds a heating period for a specific day
