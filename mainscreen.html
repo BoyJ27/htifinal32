@@ -13,17 +13,23 @@
   <div class="topbar">Thermostat+</div>
 
 <div id="content">
+
 <p id="currentday"></p>
 <p id="currenttime"></p>
 <p class="title">Current temperature: <span id="currentTemp"></span></p>
 <p class="title">Set temperature: <span id="targetTemp"></span></p>
-<span class="title">Until <div id="nextswitch"></div></span>
 
-<div>
-  <div><a href="daynight.html"><img src="daynight.png" class="imgbuttons"/></a></div>
-  <div><a href="weekPlanning.html"><img src="weekplan.png" class="imgbuttons"/></a></div>
-  <div><a href="holidayplanner.html"><img id="dynamicimage" class="imgbuttons"/></a></div>
+<div class="tempbuttons">
+<span class="buttonupfast"><input type="image" id="tempupfast" src="arrow-up-fast.png" width=20px></input></span>
+<span class="buttonup"><input type="image" id="tempup" src="arrow-up.png" width=20px></input></span>
+<span class="buttondown"><input type="image"  id="tempdown" src="arrow-down.png" width=20px></input></span>
+<span class="buttondownfast"><input type="image" id="tempdownfast" src="arrow-down-fast.png" width=20px></input></span>
+</div>
 
+<div class="hyperbuttons">
+  <span><a href="daynight.html"><img src="daynight.png" class="imgbuttons"/></a></span>
+  <span><a href="weekPlanning.html"><img src="weekplan.png" class="imgbuttons"/></a></span>
+  <span><a href="holidayplanner.html"><img id="dynamicimage" class="imgbuttons"/></a></span>
 </div>
 </div>
 </body>

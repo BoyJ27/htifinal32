@@ -25,3 +25,48 @@ $("#currentTemp").append(currtemp);
 $("#targetTemp").empty();
 $("#targetTemp").append(targettemp);
 }
+
+$( document ).ready(function() {
+$("#tempupfast").click(function(){
+  var currsetting = get("targetTemperature", "target_temperature");
+  var parsedsetting = parseFloat(currsetting);
+  if (parsedsetting < 29.5){
+  var newsetting = parsedsetting + 0.5;
+  put('targetTemperature', 'target_temperature', newsetting);
+} else {
+  alert("You have reached the maximum temperature.");
+}
+});
+$("#tempup").click(function(){
+  var currsetting = get("targetTemperature", "target_temperature");
+  var parsedsetting = parseFloat(currsetting);
+  if (parsedsetting < 29.9){
+  var newsetting = parsedsetting + 0.1;
+  put('targetTemperature', 'target_temperature', newsetting);
+} else {
+  alert("You have reached the maximum temperature.");
+}
+});
+$("#tempdown").click(function(){
+  var currsetting = get("targetTemperature", "target_temperature");
+  var parsedsetting = parseFloat(currsetting);
+  if (parsedsetting > 5.1){
+  var newsetting = parsedsetting - 0.1;
+  put('targetTemperature', 'target_temperature', newsetting);
+} else {
+  alert("You have reached the maximum temperature.");
+}
+
+});
+$("#tempdownfast").click(function(){
+  var currsetting = get("targetTemperature", "target_temperature");
+  var parsedsetting = parseFloat(currsetting);
+  if (parsedsetting > 5.5){
+  var newsetting = parsedsetting - 0.5;
+  put('targetTemperature', 'target_temperature', newsetting);
+} else {
+  alert("You have reached the maximum temperature.");
+}
+});
+
+});
