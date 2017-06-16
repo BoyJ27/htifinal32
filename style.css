@@ -127,3 +127,12 @@ input:disabled {
 	width: 130px;
 
 }
+
+.center-text {
+	text-align: center;
+}
+
+.controlled-input {
+	width: 75%;
+	margin: 0 auto;
+}

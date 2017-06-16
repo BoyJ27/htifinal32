@@ -1,0 +1,54 @@
+<html>
+<head>
+	<meta charset="utf-8">
+  <script src="jquery-2.1.0.min.js"></script>
+	<script src="js-cookie.js"></script>
+	<script src="script.js"></script>
+	<script src="dayNightChange.js"></script>
+	<script src="api.js"></script>
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+  <div class="topbar">
+  	<a class="homeimg" href="mainscreen.html"><img src="home.svg"></a>
+  	Thermostat+
+  </div>
+
+  <div id="content">
+        <table class="table">
+          <thead>
+            <tr class="center-text">
+              <th></th>
+              <th>Day</th>
+              <th>Night</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            <tr>
+              <td>Current Setting:</td>
+              <td class="center-text">
+                <span id="currentDayTemp"></span> &#8451;
+              </td>
+              <td class="center-text">
+                <span id="currentNightTemp"></span> &#8451;
+              </td>
+            </tr>
+
+            <tr>
+              <td>New Setting:</td>
+              <td class="center-text">
+                <input type="text" id="newDayTemp" class="form-control controlled-input" placeholder="Targeted Day Temperature" aria-describedby="basic-addon1">
+              </td>
+              <td class="center-text">
+                <input type="text" id="newNightTemp" class="form-control controlled-input" placeholder="Targeted Night Temperature" aria-describedby="basic-addon1">
+              </td>
+            </tr>
+          </tbody>
+        </table>
+
+        <button class="btn btn-default custom-btn" onclick="submitChanges()" type="button">Save changes.</button>
+      </div>
+  </body>
+</html>
