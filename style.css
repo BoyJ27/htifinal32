@@ -12,12 +12,14 @@ body {
 	background-color: #ed7d31;
 	height: 2em;
 	text-align: center;
+	font-size: 24px;
 	font-weight: bold;
 	z-index: 10;
+	vertical-align: middle;
 }
 
 #content, .content {
-	margin-top: 2em;
+	margin-top: 3em;
 }
 
 .title {
@@ -90,6 +92,38 @@ input:disabled {
 
 .imgbuttons{
 	z-index: 10;
-	width: 50px;
-	height: 50px;
+	width: 75px;
+	height: 75px;
+	margin-left: 15px;
+	margin-right: 15px;
+
+}
+#currentday{
+	font-size: 24px;
+}
+#currenttime{
+	font-size: 20px;
+}
+.daytime{
+	text-align: center;
+}
+.tempbuttons {
+	text-align: center;
+	margin-top: 50px;
+}
+.tempbuttonsstyle {
+	width: 30px;
+	margin-left: 10px;
+	margin-right: 10px;
+}
+.hyperbuttons {
+	margin-top: 50px;
+	text-align: center;
+		align-items: center;
+}
+
+.buttoncontainer{
+	float: left;
+	width: 130px;
+
 }

@@ -4,10 +4,13 @@ $( document ).ready(function() {
   myVar = setInterval(updateMain, 200);
     var holidaystate = get('weekProgramState', 'week_program_state');
     console.log(holidaystate);
-    if (holidaystate = 'off'){
-      $("#dynamicimage").attr('src', 'holiday.png');
-    } else{
+    if (holidaystate == 'on'){
+      $("#dynamicimage").attr('src', '');
       $("#dynamicimage").attr('src', 'holidaygrey.png');
+    } else if (holidaystate == 'off'){
+      console.log('JAJA!');
+      $("#dynamicimage").attr('src', '');
+      $("#dynamicimage").attr('src', "holiday.png");
     }
 });
 
@@ -24,6 +27,7 @@ $("#currentTemp").empty();
 $("#currentTemp").append(currtemp);
 $("#targetTemp").empty();
 $("#targetTemp").append(targettemp);
+
 }
 
 $( document ).ready(function() {
@@ -68,5 +72,4 @@ $("#tempdownfast").click(function(){
   alert("You have reached the maximum temperature.");
 }
 });
-
 });
