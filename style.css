@@ -123,8 +123,12 @@ input:disabled {
 }
 
 .buttoncontainer{
-	float: left;
+	/*float: left;*/
 	width: 130px;
+  /*height: 100px;*/
+  /*width: 100px;*/
+  display: inline-block;
+  margin: 10px;
 
 }
 
@@ -134,5 +138,9 @@ input:disabled {
 
 .controlled-input {
 	width: 75%;
+	margin: 0 auto;
+}
+
+#tempSlider {
 	margin: 0 auto;
 }
