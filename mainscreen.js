@@ -18,8 +18,8 @@ $( document ).ready(function() {
       handleShape: "dot",
       width: 24,
       radius: 160,
-      value: 11.5,
-      startAngle: 90,
+      value: get("currentTemperature", "current_temperature"),
+      startAngle: 270,
       handleSize: "+14",
       max: "29.5",
       min: "5.5",
@@ -28,6 +28,10 @@ $( document ).ready(function() {
 
       drag: function (args) {
           // handle the drag event here
+          sliderColorRefactor(args);
+      },
+      create: function(args) {
+          sliderColorRefactor(args);
       },
       change: function (args) {
           // handle the change event here
@@ -35,6 +39,8 @@ $( document ).ready(function() {
           put('targetTemperature', 'target_temperature', args.value);
           var targettemp = get("targetTemperature", "target_temperature");
           $("#targetTemp").text(targettemp);
+
+          sliderColorRefactor(args);
       }
   });
 
@@ -81,11 +87,25 @@ $( document ).ready(function() {
   });
 });
 
+ColorMix.setGradient([
+  { reference: 0, color: { red: 0, green: 0, blue: 255 } },
+  { reference: 25, color: { red: 0, green: 255, blue: 255 } },
+  { reference: 50, color: { red: 255, green: 255, blue: 255 } },
+  { reference: 75, color: { red: 255, green: 155, blue: 0 } },
+  { reference: 100, color: { red: 255, green: 0, blue: 0 } }
+]);
+
+var sliderColorRefactor = function(args) {
+  var color = ColorMix.blend( 100*(args.value - 5.5)/(29.5 - 5.5) );
+
+  $(".rs-range-color").css("background", "rgb(" + color.red + ", " + color.green + ", " + color.blue + ")");
+}
+
 function updateMain(){
   var time = get("time", "time");
   var day = get("day", "current_day");
   var currtemp = get("currentTemperature", "current_temperature");
-  var targettemp = get("targetTemperature", "target_temperature");
+  // var targettemp = get("targetTemperature", "target_temperature");
 
   $("#currentday").text(day);
 
@@ -93,6 +113,6 @@ function updateMain(){
 
   $("#currentTemp").text(currtemp);
 
-  $("#targetTemp").text(targettemp);
+  // $("#targetTemp").text(targettemp);
 
 }

@@ -129,7 +129,11 @@ input:disabled {
   /*width: 100px;*/
   display: inline-block;
   margin: 10px;
-
+.spinner {
+    background: cyan;
+    border-radius: 50%;
+    /* ... */
+}
 }
 
 .center-text {
@@ -143,4 +147,88 @@ input:disabled {
 
 #tempSlider {
 	margin: 0 auto;
+}
+
+/*temp*/
+.spinner {
+    background: cyan;
+    border-radius: 50%;
+		position: relative;
+    /* ... */
+}
+
+.spinner:before,
+.spinner:after {
+    content: '';
+    position: absolute;
+}
+
+.spinner:before {
+    border-radius: 50%;
+    background:
+        linear-gradient(0deg,   hsla(0, 0%, 100%, 1  ) 50%, hsla(0, 0%, 100%, 0.9) 100%)   0%   0%,
+        linear-gradient(90deg,  hsla(0, 0%, 100%, 0.9)  0%, hsla(0, 0%, 100%, 0.6) 100%) 100%   0%,
+        linear-gradient(180deg, hsla(0, 0%, 100%, 0.6)  0%, hsla(0, 0%, 100%, 0.3) 100%) 100% 100%,
+        linear-gradient(360deg, hsla(0, 0%, 100%, 0.3)  0%, hsla(0, 0%, 100%, 0  ) 100%)   0% 100%
+    ;
+    background-repeat: no-repeat;
+    background-size: 50% 50%;
+    top: -1px;
+    bottom: -1px;
+    left: -1px;
+    right: -1px;
+}
+
+.spinner:after {
+    background: white;
+    border-radius: 50%;
+    top: 3%;
+    bottom: 3%;
+    left: 3%;
+    right: 3%;
+}
+
+.tophalf {
+position:absolute;
+width: 250px; height:125px;
+-webkit-border-top-left-radius: 193px;
+-webkit-border-top-right-radius: 193px;
+-moz-border-radius-topleft: 193px;
+-moz-border-radius-topright: 193px;
+border-top-left-radius: 193px;
+border-top-right-radius: 193px;
+
+background: -moz-linear-gradient(left, #db9771 1%, #cc5f7f 51%, #c30380 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(1%,#db9771), color-stop(51%,#cc5f7f), color-stop(100%,#c30380));
+background: -webkit-linear-gradient(left, #db9771 1%,#cc5f7f 51%,#c30380 100%);
+background: -o-linear-gradient(left, #db9771 1%,#cc5f7f 51%,#c30380 100%);
+background: -ms-linear-gradient(left, #db9771 1%,#cc5f7f 51%,#c30380 100%);
+background: linear-gradient(to right, #db9771 1%,#cc5f7f 51%,#c30380 100%);
+}
+
+.inner {
+ position: relative; z-index: 1;
+ top: 20px; left: 20px;
+ width: 210px; height: 210px;
+ background-color: white;
+ border-radius: 100%;
+}
+
+.bottomhalf {
+position:absolute;
+top:133px;
+width: 250px; height:125px;
+-webkit-border-bottom-right-radius: 193px;
+-webkit-border-bottom-left-radius: 193px;
+-moz-border-radius-bottomright: 193px;
+-moz-border-radius-bottomleft: 193px;
+border-bottom-right-radius: 193px;
+border-bottom-left-radius: 193px;
+
+background: -moz-linear-gradient(left, #db9771 1%, #edc552 51%, #ffec00 100%);
+background: -webkit-gradient(linear, left top, right top, color-stop(1%,#db9771), color-stop(51%,#edc552), color-stop(100%,#ffec00));
+background: -webkit-linear-gradient(left, #db9771 1%,#edc552 51%,#ffec00 100%);
+background: -o-linear-gradient(left, #db9771 1%,#edc552 51%,#ffec00 100%);
+background: -ms-linear-gradient(left, #db9771 1%,#edc552 51%,#ffec00 100%);
+background: linear-gradient(to right, #db9771 1%,#edc552 51%,#ffec00 100%);
 }
