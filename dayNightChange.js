@@ -2,15 +2,12 @@ $(document).ready(function() {
   getCurrent();
 });
 
-var getCurrent = function() {
-  $("#currentDayTemp").text(get("dayTemperature", "day_temperature"));
-  $("#currentNightTemp").text(get("nightTemperature", "night_temperature"));
-
-  $("#newDayTemp").val("");
-  $("#newNightTemp").val("");
+function getCurrent() {
+  $("#newDayTemp").val(get("dayTemperature", "day_temperature"));
+  $("#newNightTemp").val(get("nightTemperature", "night_temperature"));
 }
 
-var submitChanges = function() {
+function submitChanges() {
   if($("#newDayTemp").val() !== "") {
     put("dayTemperature", "day_temperature", $("#newDayTemp").val());
   }
