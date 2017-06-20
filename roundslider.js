@@ -179,6 +179,9 @@
             this.tooltip = createElement("span.rs-tooltip rs-tooltip-text");
             this.container.append(this.tooltip);
             this._tooltipEditable();
+
+            this.tooltip.html('<span><p class="daytime title">Current Temp.: <span id="currentTemp"></span></p></span><span><p class="daytime title">Set Temp.: <span id="targetTemp"></span></p></span>');
+            
             this._updateTooltip();
         },
         _removeTooltip: function () {
@@ -727,7 +730,8 @@
         _updateTooltip: function () {
             if (this.tooltip && !this.tooltip.hasClass("hover"))
                 // this.tooltip.html(this._getTooltipValue());
-                this.tooltip.html('<span><p class="daytime title">Current Temp.: <span id="currentTemp">' + get("currentTemperature", "current_temperature") + '</span></p></span><span><p class="daytime title">Set Temp.: <span id="targetTemp">' + this._getTooltipValue() + '</span></p></span>');
+                $("#targetTemp").text(this._getTooltipValue());
+                // this.tooltip.html('<span><p class="daytime title">Current Temp.: <span id="currentTemp"></span></p></span><span><p class="daytime title">Set Temp.: <span id="targetTemp"></span></p></span>');
 
             this._updateTooltipPos();
         },
