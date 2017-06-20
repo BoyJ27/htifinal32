@@ -14,7 +14,7 @@ body {
 	text-align: center;
 	font-size: 24px;
 	font-weight: bold;
-	z-index: 10;
+	z-index: 20;
 	vertical-align: middle;
 }
 
@@ -54,7 +54,7 @@ body {
 	margin-right: 5%;
 }
 
-.hflex div img {
+.switches div img {
 	position: relative;
 	bottom: -5px;
 	max-width: 20%;
@@ -136,10 +136,16 @@ input:disabled {
 .buttoncontainer{
 	/*float: left;*/
 	width: 130px;
+	flex-grow: 0 !important;
   /*height: 100px;*/
   /*width: 100px;*/
+<<<<<<< HEAD
   display: inline-block;
   margin: 0px;
+=======
+  
+  margin: auto;
+>>>>>>> a39bdc794fa4eed000e722a6dc2bf029d8bc5830
 }
 
 .center-text {

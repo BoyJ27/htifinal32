@@ -17,6 +17,7 @@ function buildCurrentSwitches() {
 	}
 	
 	content.classList.add("hflex");
+	content.classList.add("switches");
 	leftbar=document.createElement("div");
 	rightbar=document.createElement("div");
 	leftbar.id="leftbar";
