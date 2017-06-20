@@ -6,7 +6,7 @@ $( document ).ready(function() {
     circleShape: "pie",
     width: 24,
     radius: 160,
-    value: get("currentTemperature", "current_temperature"),
+    value: get("targetTemperature", "target_temperature"),
     startAngle: 315,
     handleSize: "+14",
     max: "29.5",
@@ -22,6 +22,9 @@ $( document ).ready(function() {
     create: function(args) {
         sliderColorRefactor(args);
         $("body").append("<style>.rs-overlay { background-color: #cccccc; } .rs-inner { background-color: #cccccc; } .tempbuttons { text-align: left; }</style>");
+
+        var targettemp = get("targetTemperature", "target_temperature");
+        $("#targetTemp").text(targettemp);
     },
     change: function (args) {
         // handle the change event here
