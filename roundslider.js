@@ -181,7 +181,7 @@
             this._tooltipEditable();
 
             this.tooltip.html('<span><p class="daytime title">Current Temp.: <span id="currentTemp"></span></p></span><span><p class="daytime title">Set Temp.: <span id="targetTemp"></span></p></span>');
-            
+
             this._updateTooltip();
         },
         _removeTooltip: function () {
@@ -222,8 +222,12 @@
                 this._analyzeModelValue();
                 this._validateModelValue();
                 this._setValue();
-                this.input.val(this._getTooltipValue(true));
-                // this.input.focus().html('<span><p class="daytime title">Curr. Temp.: <span id="currentTemp"></span></p></span><span><p class="daytime title">Set Temp.: <span id="targetTemp"></span></p></span>');
+                // this.input.val(this._getTooltipValue(true));
+
+                // this.tooltip.html('<p class="daytime title">Curr. Temp.: <span id="currentTemp"></span></p><p class="daytime title">Set Temp.: <span id="targetTemp"></span></p>');
+                this._removeTooltip()
+                this._appendTooltip();
+                // this._updateTooltip();
             }
             else {
                 this.tooltip.addClass("edit").removeClass("hover");
@@ -742,8 +746,10 @@
             var circleShape = this.options.circleShape, pos;
             if (circleShape == "full" || circleShape == "pie" || circleShape.indexOf("custom") === 0)
                 return {
-                    "margin-top": -this.tooltip.outerHeight() / 2,
-                    "margin-left": -this.tooltip.outerWidth() / 2
+                    // "margin-top": -this.tooltip.outerHeight() / 2,
+                    // "margin-left": -this.tooltip.outerWidth() / 2
+                    "margin-top": "-40.5px",
+                    "margin-left": "-81.992px"
                 };
             else if (circleShape.indexOf("half") != -1) {
                 switch (circleShape) {
