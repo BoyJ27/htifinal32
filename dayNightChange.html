@@ -16,39 +16,17 @@
   </div>
 
   <div id="content">
-        <table class="table">
-          <thead>
-            <tr class="center-text">
-              <th></th>
-              <th>Day</th>
-              <th>Night</th>
-            </tr>
-          </thead>
-
-          <tbody>
-            <tr>
-              <td>Current Setting:</td>
-              <td class="center-text">
-                <span id="currentDayTemp"></span> &#8451;
-              </td>
-              <td class="center-text">
-                <span id="currentNightTemp"></span> &#8451;
-              </td>
-            </tr>
-
-            <tr>
-              <td>New Setting:</td>
-              <td class="center-text">
-                <input type="text" id="newDayTemp" class="form-control controlled-input" placeholder="Targeted Day Temperature" aria-describedby="basic-addon1">
-              </td>
-              <td class="center-text">
-                <input type="text" id="newNightTemp" class="form-control controlled-input" placeholder="Targeted Night Temperature" aria-describedby="basic-addon1">
-              </td>
-            </tr>
-          </tbody>
-        </table>
-
-        <button class="btn btn-default custom-btn" onclick="submitChanges()" type="button">Save changes.</button>
+  
+        <div class="hflex">
+              <span>
+				Day:<br>
+                <input  onblur="submitChanges();" type="text" id="newDayTemp" class="form-control controlled-input" placeholder="Targeted Day Temperature" aria-describedby="basic-addon1">
+              </span>
+              <span>
+			    Night:<br>
+                <input  onblur="submitChanges();" type="text" id="newNightTemp" class="form-control controlled-input" placeholder="Targeted Night Temperature" aria-describedby="basic-addon1">
+              </span>
       </div>
+  </div>
   </body>
 </html>

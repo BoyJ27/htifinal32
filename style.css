@@ -42,7 +42,7 @@ body {
 	flex-wrap: wrap;
 }
 
-.hflex div {
+.hflex div, .hflex span {
 	flex-grow: 1;
 	flex-shrink: 1;
 	flex-basis: 75px;
