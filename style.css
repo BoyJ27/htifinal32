@@ -109,7 +109,7 @@ input:disabled {
 }
 .tempbuttons {
 	text-align: center;
-	margin-top: 50px;
+	margin-top: 20px;
 }
 .tempbuttonsstyle {
 	width: 50px;
@@ -118,10 +118,19 @@ input:disabled {
 	margin-right: 10px;
 }
 .hyperbuttons {
-	margin-top: 50px;
+	margin-top: 0px;
 	text-align: center;
 	align-items: center;
 	z-index: 999;
+}
+
+.hyperbuttons .title {
+	margin-bottom: 5px;
+	margin-top: 5px;
+}
+
+.locktemp{
+	text-align: center;
 }
 
 .buttoncontainer{
@@ -130,7 +139,7 @@ input:disabled {
   /*height: 100px;*/
   /*width: 100px;*/
   display: inline-block;
-  margin: 10px;
+  margin: 0px;
 }
 
 .center-text {
