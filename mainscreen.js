@@ -4,14 +4,13 @@ $( document ).ready(function() {
 
     var holidaystate = get('weekProgramState', 'week_program_state');
 
-    if (holidaystate == 'on'){
-      $("#dynamicimage").attr('src', '');
-      $("#dynamicimage").attr('src', 'holidaygrey.png');
-    } else if (holidaystate == 'off'){
-      console.log('JAJA!');
-      $("#dynamicimage").attr('src', '');
-      $("#dynamicimage").attr('src', "holiday.png");
-    }
+  //  if (holidaystate == 'on'){
+  //    $("#dynamicimage").attr('src', '');
+  //    $("#dynamicimage").attr('src', 'holidaygrey.png');
+  //  } else if (holidaystate == 'off'){
+  //    $("#dynamicimage").attr('src', '');
+  //    $("#dynamicimage").attr('src', "holiday.png");
+  //  }
 
     $("#tempSlider").roundSlider({
       sliderType: "min-range",
