@@ -42,7 +42,6 @@ $( document ).ready(function() {
 
     var holidaystate = get('weekProgramState', 'week_program_state');
 
-<<<<<<< HEAD
   //  if (holidaystate == 'on'){
   //    $("#dynamicimage").attr('src', '');
   //    $("#dynamicimage").attr('src', 'holidaygrey.png');
@@ -50,7 +49,6 @@ $( document ).ready(function() {
   //    $("#dynamicimage").attr('src', '');
   //    $("#dynamicimage").attr('src', "holiday.png");
   //  }
-=======
     if (holidaystate == 'on'){
       $("#dynamicimage").attr('src', '');
       $("#dynamicimage").attr('src', 'holidaygrey.png');
@@ -58,7 +56,6 @@ $( document ).ready(function() {
       $("#dynamicimage").attr('src', '');
       $("#dynamicimage").attr('src', "holiday.png");
     }
->>>>>>> 9884489400c9ca5a5b52e253abdb00ae39a34dc3
 
   $("#tempupfast").click(function(){
     var currsetting = get("targetTemperature", "target_temperature");
