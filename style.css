@@ -54,7 +54,7 @@ body {
 	margin-right: 5%;
 }
 
-.hflex div img {
+.switches div img {
 	position: relative;
 	bottom: -5px;
 	max-width: 20%;
@@ -127,10 +127,11 @@ input:disabled {
 .buttoncontainer{
 	/*float: left;*/
 	width: 130px;
+	flex-grow: 0 !important;
   /*height: 100px;*/
   /*width: 100px;*/
-  display: inline-block;
-  margin: 10px;
+  
+  margin: auto;
 }
 
 .center-text {
