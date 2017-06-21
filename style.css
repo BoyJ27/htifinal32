@@ -161,3 +161,13 @@ input:disabled {
 	position: relative;
 	z-index: 99999;
 }
+
+button {
+	padding: 10px;
+	margin: 20px;
+	background-color: transparent;
+	border: 2px solid black;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}

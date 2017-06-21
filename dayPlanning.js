@@ -137,7 +137,6 @@ function cookiesToApi() {
 				start=end;
 			}
 		}
-		console.log(JSON.stringify(Program[DaysList[i]]));
 		sortMergeProgram(DaysList[i]);
 	}
 	setWeekProgram();
@@ -155,5 +154,21 @@ function apiToCookies() {
 		}
 		Cookies.set(DaysList[i]+"switch", program);
 	}
+}
+
+function resetDay() {
+	Cookies.set(Cookies.get("day")+"switch", {});
+	if (document.getElementById("switches")!==null){
+		buildCurrentSwitches();
+	cookiesToApi();
+	}
+}
+
+function resetAll() {
+	for (i=0; i<DaysList.length; i++) {
+		Cookies.set("day", DaysList[i]);
+		resetDay();
+	}
+	cookiesToApi();
 }
 
