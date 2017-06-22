@@ -63,6 +63,10 @@ body {
 input {
 	border-radius: 5px;
 	min-width: 0px;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	height: 2em;
 }
 input:disabled {
 	background-color: #cccccc;
@@ -170,4 +174,15 @@ button {
 	font-family: inherit;
 	font-size: inherit;
 	font-weight: inherit;
+}
+
+img.arrowButton {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 1em;
+	vertical-align: middle;
+}
+
+.vspace {
+	height: 20vh;
 }
