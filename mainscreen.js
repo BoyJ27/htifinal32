@@ -1,5 +1,26 @@
 $( document ).ready(function() {
   var object;
+
+  $('#lockbox').change(function() {
+    if (this.checked) {
+      var settemp = document.getElementById("settemp").value;
+      if (settemp == "") {
+        alert("Please specify the desired temperature-value.");
+      } else if (inTemperatureBoundaries(settemp) == false ) {
+        alert("Please check if the desired temperature is between 5 and 30 degrees C.");
+      } else{
+        var sendtemp = parseFloat(settemp);
+        put("weekProgramState", "week_program_state", "off");
+        put("targetTemperature", "target_temperature", sendtemp);
+        document.getElementById("settemp").disabled = true;
+    }} else {
+      put('weekProgramState', "week_program_state", 'on');
+      document.getElementById("settemp").disabled = false;
+      document.getElementById("settemp").value = '';
+    }
+  });
+
+
   $("#tempSlider").roundSlider({
     sliderType: "min-range",
     handleShape: "dot",
@@ -111,6 +132,7 @@ var sliderColorRefactor = function(args) {
 
   $(".rs-range-color").css("background", "rgb(" + color.red + ", " + color.green + ", " + color.blue + ")");
 }
+
 
 function updateMain(){
   var time = get("time", "time");
