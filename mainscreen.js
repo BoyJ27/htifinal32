@@ -42,21 +42,6 @@ $( document ).ready(function() {
 
     var holidaystate = get('weekProgramState', 'week_program_state');
 
-<<<<<<< HEAD
-
-=======
->>>>>>> a39bdc794fa4eed000e722a6dc2bf029d8bc5830
-  //  if (holidaystate == 'on'){
-  //    $("#dynamicimage").attr('src', '');
-  //    $("#dynamicimage").attr('src', 'holidaygrey.png');
-  //  } else if (holidaystate == 'off'){
-  //    $("#dynamicimage").attr('src', '');
-  //    $("#dynamicimage").attr('src', "holiday.png");
-  //  }
-<<<<<<< HEAD
-
-=======
->>>>>>> a39bdc794fa4eed000e722a6dc2bf029d8bc5830
     if (holidaystate == 'on'){
       $("#dynamicimage").attr('src', '');
       $("#dynamicimage").attr('src', 'holidaygrey.png');
@@ -64,10 +49,7 @@ $( document ).ready(function() {
       $("#dynamicimage").attr('src', '');
       $("#dynamicimage").attr('src', "holiday.png");
     }
-<<<<<<< HEAD
 
-=======
->>>>>>> a39bdc794fa4eed000e722a6dc2bf029d8bc5830
 
   $("#tempupfast").click(function(){
     var currsetting = get("targetTemperature", "target_temperature");

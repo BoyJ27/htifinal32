@@ -1,6 +1,5 @@
 
 function switchOnHoliday() {
-  var settemp = document.getElementById("settemp").value;
   if (document.getElementById("settemp").value == "") {
     alert("Please speify the desired temperature-value.");
 } else if (inTemperatureBoundaries(settemp) == false ) {
