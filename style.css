@@ -63,6 +63,10 @@ body {
 input {
 	border-radius: 5px;
 	min-width: 0px;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+	height: 2em;
 }
 input:disabled {
 	background-color: #cccccc;
@@ -174,4 +178,37 @@ input:disabled {
 	/*margin-top: 50px;*/
 	position: relative;
 	z-index: 99999;
+}
+
+button {
+	padding: 10px;
+	margin: 20px;
+	background-color: transparent;
+	border: 2px solid black;
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit;
+}
+
+img.arrowButton {
+	margin-left: 10px;
+	margin-right: 10px;
+	width: 1em;
+	vertical-align: middle;
+}
+
+img.arrowButton:last-child {
+	 position: absolute;
+	 right: 0px;
+}
+
+#day {
+	text-align: center;
+	display: inline-block;
+	height: 2em;
+	width: calc(100% - 2em - 40px);
+}
+
+.vspace {
+	height: 20vh;
 }

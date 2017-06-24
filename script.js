@@ -115,4 +115,6 @@ function createGoToPage(day){
 }
 
 
+
+
 setCookieDefaults(); //should be called before other script functions, before the page is loaded
