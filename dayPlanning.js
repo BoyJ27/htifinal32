@@ -33,6 +33,7 @@ function buildCurrentSwitches() {
 		var input=document.createElement("input");
 		input.value=switches[i].time;
 		input.onblur=readCurrentSwitches;
+		input.setAttribute("type","time");
 		span.appendChild(input);
 		var image=document.createElement("img" );
 		image.setAttribute("src" , "delete.png");
