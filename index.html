@@ -1,57 +1,44 @@
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="utf-8">
 
   <link rel="stylesheet" href="style.css">
-  <link rel="stylesheet" href="roundslider.css" />
 
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="jquery-2.1.0.min.js"></script>
   <script src="js-cookie.js"></script>
   <script src="script.js"></script>
   <script src="api.js"></script>
   <script src="holidayplanner.js"></script>
-  <script src="roundslider.js"></script>
   <script src="colormix-2.0.0.min.js"></script>
   <script src="mainscreen.js"></script>
+  
 </head>
 
 <body>
   <div class="topbar">Thermostat+</div>
 
 <div id="content">
-<div class="daytime">
-<span id="currentday"></span>
-<span id="currenttime"></span>
-</div>
-  <!-- <div>
-    <span><p class="daytime title">Curr. Temp.: <span id="currentTemp"></span></p></span>
-    <span><p class="daytime title">Set Temp.: <span id="targetTemp"></span></p></span>
-  </div> -->
+	<div class="daytime">
+		<span id="currentday">Octember</span>
+		<span id="currenttime">43:21</span>
+	</div>
 
 
-<div class="tempbuttons">
-  <div id="tempSlider"></div>
-<!--
-  <br />
-  <br />
-  <br /> -->
+	<div id="tempSlider" onclick="sliderInput(event);">
+		<div id="innerContent">
+			<span id="TargetTemp"></span>
+			<br>
+			Current: <span id="actualTemp"></span><br>
+			<input id="lock" type="checkbox" onclick="check();">Lock
+		</div>
+	</div>
 
-  <div id="tempButtonsIndex">
-    <span class="buttonup"><input type="image" class="tempbuttonsstyle" id="tempup" src="plusSign.png"></input></span>
-    <span class="buttondown"><input type="image" class="tempbuttonsstyle" id="tempdown" src="minusSign.ico"></input></span>
-  </div>
-
-</div>
+	</div>
 
 
-<div class="hflex" style="margin: 0px; text-align:center; justify-content: center; width: 100%; z-index: 11">
-    <div class="buttoncontainer"><a href="dayNightChange.html"><img src="daynight.png" class="imgbuttons"/></a><p class="title">Edit Day/Night</p></div>
-    <div class="buttoncontainer"><a href="weekPlanning.html"><img src="weekplan.png" class="imgbuttons"/></a><p class="title">Edit Week Plan</p></div>
-</div>
-<div class="locktemp">
-    <span class="title">Lock Temp. To:</span>
-    <input id="settemp"></input>
-    <input id="lockbox" type="checkbox"></input>
-</div>
+	<div class="hflex" style="margin: 0px; text-align:center; justify-content: center; width: 100%; z-index: 11">
+		<div class="buttoncontainer"><a href="dayNightChange.html"><img src="daynight.png" class="imgbuttons"/></a><p class="title">Edit Day/Night</p></div>
+		<div class="buttoncontainer"><a href="weekPlanning.html"><img src="weekplan.png" class="imgbuttons"/></a><p class="title">Edit Week Plan</p></div>
+	</div>
 </div>
 </body>

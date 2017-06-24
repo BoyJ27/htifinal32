@@ -143,13 +143,6 @@ input:disabled {
 	flex-grow: 0 !important;
   /*height: 100px;*/
   /*width: 100px;*/
-<<<<<<< HEAD
-  display: inline-block;
-  margin: 0px;
-=======
-  
-  margin: auto;
->>>>>>> a39bdc794fa4eed000e722a6dc2bf029d8bc5830
 }
 
 .center-text {
@@ -211,4 +204,26 @@ img.arrowButton:last-child {
 
 .vspace {
 	height: 20vh;
+}
+
+#tempSlider {
+	width: 300px;
+	height: 300px;
+	max-width: 100vw;
+	max-height: 100vw;
+	background-size: cover;
+	text-align: center;
+	position: relative;
+}
+
+#tempSlider div {
+	position: absolute;
+	left: 15%;
+	top: 25%;
+	width: 70%;
+	height: 75%;
+}
+
+#TargetTemp {
+	font-size: 7em;
 }

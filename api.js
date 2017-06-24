@@ -228,9 +228,18 @@ function uploadData(address, xml) {
     });
 }
 
+function getDayIndex(day) {
+	for (var i=0; i<DaysList.length; i++) {
+		if (DaysList[i]===day){
+			return i;
+		}
+	}
+	return 5;
+}
+
 function parseTime(t) {
 	var split=t.split(":");
-    return parseFloat(split[0]) + parseFloat(split[1]); //this is a stupid function. Why risk using a float here when a int
+    return parseFloat(split[0]) + parseFloat(split[1])/60; //this is a stupid function. Why risk using a float here when a int
 	//is way more accurate. Also this assumes numbers below 12 are zero padded, which may not actually be true.
 }
 

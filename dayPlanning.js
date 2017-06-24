@@ -173,17 +173,10 @@ function resetAll() {
 	cookiesToApi();
 }
 
-function getDayIndex() {
-	var day=Cookies.get("day");
-	for (var i=0; i<DaysList.length; i++) {
-		if (DaysList[i]===day){
-			return i;
-		}
-	}
-}
+
 
 function move(amount) {
-	index=getDayIndex() + amount
+	index=getDayIndex(Cookies.get("day")) + amount
 	if (index < 0){
 		index+=DaysList.length;
 	}
