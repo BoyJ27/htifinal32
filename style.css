@@ -183,6 +183,18 @@ img.arrowButton {
 	vertical-align: middle;
 }
 
+img.arrowButton:last-child {
+	 position: absolute;
+	 right: 0px;
+}
+
+#day {
+	text-align: center;
+	display: inline-block;
+	height: 2em;
+	width: calc(100% - 2em - 40px);
+}
+
 .vspace {
 	height: 20vh;
 }

@@ -4,6 +4,7 @@ function buildCurrentSwitches() {
 		day="Monday";
 		Cookies.set("day", day);
 	}
+	$("#day").text(day);
 	
 	if (Cookies.get(day+"switch")===undefined){
 		document.getElementById("content").innerHTML="error loading previous saved switches (Cookie not found)";
@@ -170,5 +171,34 @@ function resetAll() {
 		resetDay();
 	}
 	cookiesToApi();
+}
+
+function getDayIndex() {
+	var day=Cookies.get("day");
+	for (var i=0; i<DaysList.length; i++) {
+		if (DaysList[i]===day){
+			return i;
+		}
+	}
+}
+
+function move(amount) {
+	index=getDayIndex() + amount
+	if (index < 0){
+		index+=DaysList.length;
+	}
+	else if (index >= DaysList.length) {
+		index-=DaysList.length;
+	}
+	Cookies.set("day", DaysList[index]);
+	buildCurrentSwitches();
+}
+
+function moveLeft() {
+	move(-1);
+}
+
+function moveRight() {
+	move(1);
 }
 
