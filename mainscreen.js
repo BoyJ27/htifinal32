@@ -103,8 +103,8 @@ function getData() {
 }
 
 
-function check() {
-	if ($("lock").prop('checked')){
+function checkBoxChanged() {
+	if (document.getElementById("lock").checked){
 		switchOnHoliday();
 	}
 	else {

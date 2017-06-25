@@ -25,11 +25,11 @@
 
 
 	<div id="tempSlider" onclick="sliderInput(event);">
-		<div id="innerContent">
+		<div id="innerContent" onclick="event.stopPropagation();">
 			<span id="TargetTemp"></span>
 			<br>
 			Current: <span id="actualTemp"></span><br>
-			<input id="lock" type="checkbox" onclick="check();">Lock
+			<input id="lock" type="checkbox" onchange="checkBoxChanged();">Lock
 			<div id="tempButtonsIndex" class="hflex">
 				<span class="buttondown"><input type="image" class="tempbuttonsstyle" id="tempup" onclick="addTemp(-0.1)" src="minusSign.ico"></input></span>
 				<span class="buttonup"><input type="image" class="tempbuttonsstyle" id="tempdown" src="plusSign.png" onclick="addTemp(0.1)"></input></span>
