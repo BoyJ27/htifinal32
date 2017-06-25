@@ -113,8 +113,9 @@ function getWeekProgram() {
 
 /* Uploads all data to the server except for currentTemperature and weekProgram
 */
-function put(attribute_name, xml_tag, value){
-    uploadData("/"+attribute_name, "<" + xml_tag + ">"+ value + "</" + xml_tag + ">");
+function put(attribute_name, xml_tag, value, callback){
+    uploadData("/"+attribute_name, "<" + xml_tag + ">"+ value + "</" + xml_tag + ">",
+		callback !== undefined ? callback : function(){});
 }
 
 function requestData(address, func, async) {
@@ -232,13 +233,14 @@ function setDefault() {
 }
 
 
-function uploadData(address, xml) {
+function uploadData(address, xml, callback) {
     $.ajax({
         type: "put",
         url: ServerUrl + address,
         contentType: 'application/xml',
         data: xml,
-        async: true
+        async: true,
+		success: callback
     });
 }
 

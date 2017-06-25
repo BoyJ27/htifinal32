@@ -37,7 +37,7 @@ function angle(value) {
 }
 
 function value(angle) {
-	return Number((5+(((angle + 135) * 25)/270)).toFixed(1))
+	return Math.max(5, Math.min(30, Number((5+(((angle + 135) * 25)/270)).toFixed(1))))
 }
 
 function addTemp(dif){

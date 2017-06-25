@@ -1,19 +1,17 @@
 $(document).ready(getCurrent);
 
 function getCurrent() {
-  $("#newDayTemp").val(get("dayTemperature", "day_temperature"));
-  $("#newNightTemp").val(get("nightTemperature", "night_temperature"));
+	get("dayTemperature", "day_temperature", function(value){$("#newDayTemp").val(value)});
+	get("nightTemperature", "night_temperature", function(value){$("#newNightTemp").val(value)});
 }
 
 function submitChanges() {
   if($("#newDayTemp").val() !== "") {
-    put("dayTemperature", "day_temperature", $("#newDayTemp").val());
+    put("dayTemperature", "day_temperature", Math.max(5,Math.min(30,Number($("#newDayTemp").val()))), getCurrent);
   }
   if($("#newNightTemp").val() !== "") {
-    put("nightTemperature", "night_temperature", $("#newNightTemp").val());
+    put("nightTemperature", "night_temperature", Math.max(5,Math.min(30,Number($("#newNightTemp").val()))), getCurrent);
   }
-
-  getCurrent();
 }
 
 function left(type){

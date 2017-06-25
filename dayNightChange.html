@@ -15,18 +15,19 @@
 		Thermostat+
 	</div>
 	<div id="content">
+		<p>Temperature values must be betwen 5 and 30 degrees inclusive.</p>
 		<div class="vspace"></div>
 		<div class="title">Day</div>
 		<div class="row">
 			<img src="triangle.svg" style="transform: scale(-1, 1)" class="arrowButton" onclick="left('Day');">
-			<input id="newDayTemp" type="number" style="width: calc(100% - 2em - 40px)" onblur="submitChanges();">
+			<input id="newDayTemp" type="number" step="0.1" min="5" max="30" style="width: calc(100% - 2em - 40px)" onblur="submitChanges();">
 			<img src="triangle.svg" class="arrowButton" onclick="right('Day');">
 		</div>
 		<div class="vspace"></div>
 		<div class="title">Night</div>
 		<div class="row">
 			<img src="triangle.svg" style="transform: scale(-1, 1)" class="arrowButton" onclick="left('Night');">
-			<input id="newNightTemp" type="number" style="width: calc(100% - 2em - 40px)" onblur="submitChanges();">
+			<input id="newNightTemp" type="number" step="0.1" min="5" max="30" style="width: calc(100% - 2em - 40px)" onblur="submitChanges();">
 			<img src="triangle.svg" class="arrowButton" onclick="right('Night');">
 		</div>
 		<div class="vspace"></div>
