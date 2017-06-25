@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	buildSlider();
 	window.setInterval(updateTime, 1000);
 	window.setInterval(getData, 3000);
 	getData();
@@ -42,32 +43,59 @@ function value(angle) {
 
 function addTemp(dif){
 	targetTemp+=dif;
-	buildSlider();
+	updateSlider();
 	put("targetTemperature", "target_temperature", targetTemp);
 }
 
 function buildSlider() {
-	var outerRadius=98;
+	var outerRadius=96;
 	var innerRadius=80;
+	
+	var tempSlider=document.getElementById("tempSliderImage");
+	
+	var path=document.createElementNS("http://www.w3.org/2000/svg","path");
+	path.setAttribute("d", "M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 1 1 "+point(outerRadius, 135)+" L "+
+			point(innerRadius, 135)+"A "+innerRadius+" "+innerRadius+" 0 1 0 "+point(innerRadius, -135));
+	path.setAttribute("fill", "white");
+	path.setAttribute("stroke", "black");
+	path.setAttribute("stroke-width", "2");
+	tempSlider.appendChild(path);
+	
+	path=document.createElementNS("http://www.w3.org/2000/svg","path");
+	path.setAttribute("id","actualPath");
+	path.setAttribute("fill", "orange");
+	path.setAttribute("stroke-width", "2");
+	path.setAttribute("stroke", "black");
+	tempSlider.appendChild(path);
+	
+	var knob=document.createElementNS("http://www.w3.org/2000/svg","circle");
+	knob.setAttribute("id", "knob");
+	knob.setAttribute("fill", "grey");
+	knob.setAttribute("stroke", "black");
+	knob.setAttribute("stroke-width", "2");
+	knob.setAttribute("r", 11);
+	tempSlider.appendChild(knob);
+	
+}
+
+function updateSlider() {
+	var outerRadius=96;
+	var innerRadius=80;
+	
 	var targetAngle=angle(targetTemp);
 	var currentAngle=angle(currentTemp);
 	var flag=((currentAngle + 135) > 180 ? "1" : "0")
-	var data="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"200\" id=\"svg999\" version=\"1.1\">\n";
-		data+="<path d=\"M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 1 1 "+point(outerRadius, 135)+" L "+
-			point(innerRadius, 135)+
-		  "A "+innerRadius+" "+innerRadius+" 0 1 0 "+point(innerRadius, -135)
-		  +" Z\" fill=\"white\" stroke=\"black\" stroke-width=\"2\""
-		  +"/>\n";
-	data+="<path d=\"M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 "+flag+" 1 "+point(outerRadius, currentAngle)
+	
+	var image=document.getElementById("tempSliderImage");
+	
+	image.getElementById("actualPath").setAttribute("d", "M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 "+flag+" 1 "+point(outerRadius, currentAngle)
 		   +" L "+point(innerRadius, currentAngle)+" "+
 		  "A "+innerRadius+" "+innerRadius+" 0 "+flag+"  0 "+point(innerRadius, -135)
-		  +" Z\" fill=\"orange\" stroke=\"black\" stroke-width=\"2\" />\n";
-
-	var p=pointL((outerRadius+innerRadius)/2, angle(targetTemp));
-	data+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="10" fill="grey" stroke-width="2" stroke="black"/>\n';
-	data+="</svg>";
-	var url='data:image/svg+xml;utf8,'+encodeURIComponent(data);
-	document.getElementById("tempSlider").style.backgroundImage="url(" + url + ")";
+		  +" Z");
+	var p=pointL((outerRadius+innerRadius)/2, targetAngle);
+	var knob=image.getElementById("knob");
+	knob.setAttribute("cx", p[0]);
+	knob.setAttribute("cy", p[1]);
 	
 	$("#TargetTemp").text(targetTemp.toFixed(1));
 	$("#actualTemp").text(currentTemp.toFixed(1));
@@ -75,10 +103,13 @@ function buildSlider() {
 }
 
 function sliderInput(ev) {
-	var width=$("#tempSlider").width();
-	position = [ev.offsetX-width/2, ev.offsetY-width/2];
+	var slider=document.getElementById("tempSlider");
+	var width=slider.offsetWidth;
+	var left=slider.getBoundingClientRect().left;
+	var top=slider.getBoundingClientRect().top;
+	var position = [ev.pageX-left-width/2, ev.pageY-top-width/2];
 	targetTemp = value(180 * Math.atan2(position[0], -position[1]) / Math.PI);
-	buildSlider();
+	updateSlider();
 	put("targetTemperature", "target_temperature", targetTemp);
 }
 
@@ -97,7 +128,7 @@ function updateTime() {
 
 function getData() {
 	get("currentTemperature", "current_temperature", function(value) { currentTemp = Number(value)});
-	get("targetTemperature", "target_temperature", function(value) {targetTemp=Number(value); buildSlider();});
+	get("targetTemperature", "target_temperature", function(value) {targetTemp=Number(value); updateSlider();});
 	get("weekProgramState", "week_program_state", function(value) {document.getElementById("lock").checked= (value ==="off")});
 	getTime();
 }
