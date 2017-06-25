@@ -20,7 +20,6 @@ function getTime() {
 	day=getDayIndex(d);
 	var t=get("time", "time")
 	time=parseTime(t);
-	console.log("day: ",d,"actual day",DaysList[getDayIndex(d)]);
 }
 
 function pointL(radius, angle) {
@@ -44,6 +43,12 @@ function value(angle) {
 	return Number((5+(((angle + 135) * 25)/270)).toFixed(1))
 }
 
+function addTemp(dif){
+	targetTemp+=dif;
+	buildSlider();
+	put("targetTemperature", "target_temperature", targetTemp);
+}
+
 function buildSlider() {
 	var outerRadius=98;
 	var innerRadius=80;
@@ -51,23 +56,24 @@ function buildSlider() {
 	var currentAngle=angle(currentTemp);
 	var flag=((currentAngle + 135) > 180 ? "1" : "0")
 	var data="<svg xmlns=\"http://www.w3.org/2000/svg\" width=\"200\" height=\"200\" id=\"svg999\" version=\"1.1\">\n";
+		data+="<path d=\"M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 1 1 "+point(outerRadius, 135)+" L "+
+			point(innerRadius, 135)+
+		  "A "+innerRadius+" "+innerRadius+" 0 1 0 "+point(innerRadius, -135)
+		  +" Z\" fill=\"white\" stroke=\"black\" stroke-width=\"2\""
+		  +"/>\n";
 	data+="<path d=\"M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 "+flag+" 1 "+point(outerRadius, currentAngle)
 		   +" L "+point(innerRadius, currentAngle)+" "+
 		  "A "+innerRadius+" "+innerRadius+" 0 "+flag+"  0 "+point(innerRadius, -135)
-		  +" Z\" fill=\"orange\" />\n";
-	data+="<path d=\"M "+point(outerRadius, -135)+" A "+outerRadius+" "+outerRadius+" 0 1 1 "+point(outerRadius, 135)+" L "+
-			point(innerRadius, 135)+
-		  "A "+innerRadius+" "+innerRadius+" 0 1 0 "+point(innerRadius, -135)
-		  +" Z\" fill=\"transparent\" stroke=\"black\" stoke-width=\"2\""
-		  +"/>\n";
+		  +" Z\" fill=\"orange\" stroke=\"black\" stroke-width=\"2\" />\n";
+
 	var p=pointL((outerRadius+innerRadius)/2, angle(targetTemp));
-	data+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="10"/>\n';
+	data+='<circle cx="'+p[0]+'" cy="'+p[1]+'" r="10" fill="grey" stroke-width="2" stroke="black"/>\n';
 	data+="</svg>";
 	var url='data:image/svg+xml;utf8,'+encodeURIComponent(data);
 	document.getElementById("tempSlider").style.backgroundImage="url(" + url + ")";
 	
-	$("#TargetTemp").text(targetTemp);
-	$("#actualTemp").text(currentTemp);
+	$("#TargetTemp").text(targetTemp.toFixed(1));
+	$("#actualTemp").text(currentTemp.toFixed(1));
 	//console.log($("#tempSlider").css("background-image"));
 }
 

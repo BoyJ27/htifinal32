@@ -167,10 +167,10 @@ input:disabled {
 }
 
 #tempButtonsIndex {
-	text-align: center;
-	/*margin-top: 50px;*/
-	position: relative;
-	z-index: 99999;
+	margin-top: 50px;
+	justify-content: space-between;
+	width: 100%;
+	margin-left: 0px;	
 }
 
 button {
@@ -216,12 +216,11 @@ img.arrowButton:last-child {
 	position: relative;
 }
 
-#tempSlider div {
+#tempSlider > div {
 	position: absolute;
 	left: 15%;
 	top: 25%;
 	width: 70%;
-	height: 75%;
 }
 
 #TargetTemp {

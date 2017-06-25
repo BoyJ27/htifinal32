@@ -218,13 +218,14 @@ function setDefault() {
     uploadData('/weekProgram', (new XMLSerializer()).serializeToString(doc));
 }
 
+
 function uploadData(address, xml) {
     $.ajax({
         type: "put",
         url: ServerUrl + address,
         contentType: 'application/xml',
         data: xml,
-        async: false
+        async: true
     });
 }
 

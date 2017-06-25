@@ -30,10 +30,14 @@
 			<br>
 			Current: <span id="actualTemp"></span><br>
 			<input id="lock" type="checkbox" onclick="check();">Lock
+			<div id="tempButtonsIndex" class="hflex">
+				<span class="buttondown"><input type="image" class="tempbuttonsstyle" id="tempup" onclick="addTemp(-0.1)" src="minusSign.ico"></input></span>
+				<span class="buttonup"><input type="image" class="tempbuttonsstyle" id="tempdown" src="plusSign.png" onclick="addTemp(0.1)"></input></span>
+			</div>
 		</div>
 	</div>
+	
 
-	</div>
 
 
 	<div class="hflex" style="margin: 0px; text-align:center; justify-content: center; width: 100%; z-index: 11">
@@ -42,3 +46,4 @@
 	</div>
 </div>
 </body>
+</html>
