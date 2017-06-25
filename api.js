@@ -71,12 +71,19 @@ function sortMergeProgram(day) {
 
 /* Retrieves all data from the server except for weekProgram
 */
-function get(attribute_name, xml_tag) {
+function get(attribute_name, xml_tag, callback) {
     return requestData(
         "/"+attribute_name,
         function(data) {
-            return $(data).find(xml_tag).text();
-        }
+            var dat=$(data).find(xml_tag).text();
+			if (callback){
+				callback(dat);
+			}
+			else {
+				return dat;
+			}
+        },
+		callback
     );
 }
 
@@ -110,13 +117,19 @@ function put(attribute_name, xml_tag, value){
     uploadData("/"+attribute_name, "<" + xml_tag + ">"+ value + "</" + xml_tag + ">");
 }
 
-function requestData(address, func) {
+function requestData(address, func, async) {
+	if (async === undefined) {
+		async = false;
+	}
+	else if (async !== false) {
+		async = true;
+	}
     var result;
     $.ajax({
         type: "get",
         url: ServerUrl + address,
         dataType: "xml",
-        async: false,
+        async: async,
         success: function(data) {
             result = func(data);
         }

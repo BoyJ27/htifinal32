@@ -1,10 +1,9 @@
 $(document).ready(function() {
 	window.setInterval(updateTime, 1000);
 	window.setInterval(getData, 3000);
-	buildSlider();
 	getData();
-	document.getElementById("lock").checked=get("weekProgramState", "week_program_state")==="off";
 	getTime();
+	
 	
 	}
 );
@@ -16,10 +15,8 @@ var currentTemp=0;
 //var worker;
 
 function getTime() {
-	var d=get("day", "current_day");
-	day=getDayIndex(d);
-	var t=get("time", "time")
-	time=parseTime(t);
+	get("day", "current_day", function(value) {day = getDayIndex(value);});
+	get("time", "time", function(value) {time = parseTime(value);});
 }
 
 function pointL(radius, angle) {
@@ -99,11 +96,12 @@ function updateTime() {
 }
 
 function getData() {
-	currentTemp=Number(get("currentTemperature", "current_temperature"));
-	targetTemp=Number(get("targetTemperature", "target_temperature"));
-	buildSlider();
+	get("currentTemperature", "current_temperature", function(value) { currentTemp = Number(value)});
+	get("targetTemperature", "target_temperature", function(value) {targetTemp=Number(value); buildSlider();});
+	get("weekProgramState", "week_program_state", function(value) {document.getElementById("lock").checked= (value ==="off")});
 	getTime();
 }
+
 
 function check() {
 	if ($("lock").prop('checked')){
