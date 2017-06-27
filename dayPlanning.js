@@ -196,3 +196,10 @@ function moveRight() {
 	move(1);
 }
 
+function copyToAll() {
+	var day=Cookies.get(Cookies.get("day")+"switch");
+	for (var i=0; i<DaysList.length; i++){
+		Cookies.set(DaysList[i]+"switch", day);
+	}
+	cookiesToApi();
+}
