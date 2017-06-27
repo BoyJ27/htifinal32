@@ -9,11 +9,25 @@ $(document).ready(function() {
 	}
 );
 
+function touchEnd(event) {
+	blockScroll=false;
+	put("targetTemperature", "target_temperature", targetTemp);
+	
+}
+
 var time=0;
 var day=0;
 var targetTemp=0;
 var currentTemp=0;
+var blockScroll=false;
 //var worker;
+
+function drag(event) {
+	if (blockScroll) {
+		event.preventDefault();
+	}
+	sliderInput(event.touches[0], false);
+}
 
 function getTime() {
 	get("day", "current_day", function(value) {day = getDayIndex(value);});
@@ -102,7 +116,7 @@ function updateSlider() {
 	//console.log($("#tempSlider").css("background-image"));
 }
 
-function sliderInput(ev) {
+function sliderInput(ev, update) {
 	var slider=document.getElementById("tempSlider");
 	var width=slider.offsetWidth;
 	var left=slider.getBoundingClientRect().left;
@@ -110,7 +124,9 @@ function sliderInput(ev) {
 	var position = [ev.pageX-left-width/2, ev.pageY-top-width/2];
 	targetTemp = value(180 * Math.atan2(position[0], -position[1]) / Math.PI);
 	updateSlider();
-	put("targetTemperature", "target_temperature", targetTemp);
+	if (update===undefined){
+		put("targetTemperature", "target_temperature", targetTemp);
+	}
 }
 
 function updateTime() {
@@ -127,10 +143,12 @@ function updateTime() {
 }
 
 function getData() {
-	get("currentTemperature", "current_temperature", function(value) { currentTemp = Number(value)});
-	get("targetTemperature", "target_temperature", function(value) {targetTemp=Number(value); updateSlider();});
-	get("weekProgramState", "week_program_state", function(value) {document.getElementById("lock").checked= (value ==="off")});
-	getTime();
+	if (!blockScroll){
+		get("currentTemperature", "current_temperature", function(value) { currentTemp = Number(value)});
+		get("targetTemperature", "target_temperature", function(value) {targetTemp=Number(value); updateSlider();});
+		get("weekProgramState", "week_program_state", function(value) {document.getElementById("lock").checked= (value ==="off")});
+		getTime();
+	}
 }
 
 

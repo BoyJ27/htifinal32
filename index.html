@@ -24,7 +24,8 @@
 	</div>
 
 
-	<div id="tempSlider" onclick="sliderInput(event);">
+	<div id="tempSlider" onclick="sliderInput(event);" ontouchstart="blockScroll=true;" ontouchend="touchEnd(event);"
+			ontouchmove="drag(event);">
 		<svg  xmlns="http://www.w3.org/2000/svg" style="position: absolute; width: 100%; height: 100%; top: 0px; left: 0px"
 			viewBox="0 0 200 200" id="tempSliderImage">
 			<!-- <rect x="0" y="0" width="200" height="200" fill="green"></rect> -->
@@ -40,9 +41,6 @@
 			</div>
 		</div>
 	</div>
-
-
-
 
 	<div class="hflex" style="margin: 0px; text-align:center; justify-content: center; width: 100%; z-index: 11">
 		<div class="buttoncontainer"><a href="dayNightChange.html"><img src="daynight.png" class="imgbuttons"/></a><p class="title">Edit Day/Night</p></div>
